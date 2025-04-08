@@ -12,9 +12,9 @@ export default class extends View {
     }
 
     async beforeRender() {
-        this.featuredData = await api('/posts/?filter=featured:true');
+        this.featuredData = await api('/posts/?filter=featured:true%2Btag:news');
         this.pageData = await api('/pages/?order=published_at%20asc');
-        this.eventData = await api('/posts/?filter=tag:events&limit=5');
+        this.eventData = await api('/posts/?filter=featured:true%2Btag:events');
         this.latestPostsData = await api('/posts/?page=1');
     }
 
