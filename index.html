@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta property="og:title" content="부천YWCA" />
+    <meta property="og:description" content="생명의 바람, 세상을 살리는 여성. 부천YWCA와 함께 변화를 향해 나아가세요." />
+    <meta property="og:image" content="/static/image/og-image.png" />
+    <meta property="og:url" content="https://www.ywcabucheon.org" />
+    <meta property="og:type" content="website" />
+    <meta property="og:locale" content="ko_KR" />
+    <title>부천YWCA</title>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100..900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/static/css/index.css" />
+    <script src="https://unpkg.com/@tailwindcss/browser@4"></script>
+    <script type="module" src="/static/js/router.js"></script>
+    <script type="module" src="/static/js/util.js"></script>
+    <script>
+        // Single Page Apps for GitHub Pages
+        // MIT License
+        // https://github.com/rafgraph/spa-github-pages
+        // This script checks to see if a redirect is present in the query string,
+        // converts it back into the correct url and adds it to the
+        // browser's history using window.history.replaceState(...),
+        // which won't cause the browser to attempt to load the new url.
+        // When the single page app is loaded further down in this file,
+        // the correct url will be waiting in the browser's history for
+        // the single page app to route accordingly.
+        (function (l) {
+          if (l.search[1] === "/") {
+            var decoded = l.search
+              .slice(1)
+              .split("&")
+              .map(function (s) {
+                return s.replace(/~and~/g, "&");
+              })
+              .join("?");
+            window.history.replaceState(
+              null,
+              null,
+              l.pathname.slice(0, -1) + decoded + l.hash
+            );
+          }
+        })(window.location);</script>
+</head>
+<body>
+    <div class="flex justify-center">
+        <div class="hidden sm:flex sm:h-screen sm:w-full sm:max-w-lg sm:items-center">
+            <div class="w-full text-4xl font-bold">
+                <div class="">생명의 바람</div>
+                <div class="">세상을 살리는 여성</div>
+                <div class="text-blue-800">(사)부천YWCA</div>
+                <div class="-ml-7 flex items-center p-3">
+                    <img src="/static/image/qrcode.png" alt="qrcode" class="inline h-32 w-32 p-6" />
+                    <div class="text-base font-normal">
+                        <div class="text-lg font-bold">여성과 함께, 변화를 향해</div>
+                        <div>변화를 향해 나가는</div>
+                        <div>여정에 함께 동참해 주세요</div>
+                        <a href="https://forms.gle/kyftZU6Gze4RBmMN8" target="_blank " class="text-blue-600 font-bold">
+                            회원가입하기
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div 
+            class="h-screen w-full max-w-lg overflow-x-hidden shadow-2xl"
+            style="min-height: -webkit-fill-available"
+        >
+            <div class="bg-white">
+                <div class="flex justify-between max-w-7xl p-4">
+                    <span class="text-xl font-bold content-center">
+                        <a href="/" data-link>(사)부천YWCA</a>
+                    </span>
+                    <span class="rounded-full bg-blue-800 py-2 px-3 text-sm font-bold text-white">
+                        <a href="https://forms.gle/kyftZU6Gze4RBmMN8" target="_blank">
+                            가입하기
+                        </a>
+                    </span>
+                </div>
+            </div>
+            
+            <div id="app"></div>
+
+            <div class="border-y-1 border-gray-300 p-4">
+                <div>(사)부천YWCA</div>
+                <div class="mt-1 text-sm">
+                    <div>
+                        <span class="mr-2 text-gray-500">사업자 등록번호</span>
+                        <span class="text-gray-700">426-82-00630</span>
+                    </div>
+                    <div>
+                        <span class="mr-2 text-gray-500">소재지</span>
+                        <span class="text-gray-700">부천시 원미로 156번길 38 지평빌딩 나동 2층</span>
+                    </div>
+                    <div>
+                        <span class="mr-2 text-gray-500">전화번호</span>
+                        <span class="text-gray-700">032-668-9700~9701</span>
+                    </div>
+                    <div>
+                        <span class="mr-2 text-gray-500">이메일</span>
+                        <span class="text-gray-700">pcywca@hanmail.net</span>
+                    </div>
+                </div>
+            </div>
+            <div class="flex items-center justify-around gap-4 p-4 border-b-1 border-gray-300">
+                <a class="w-1/4" href="http://www.worldywca.org/" target="_blank">
+                    <img src="/static/image/world-ywca.png"/>
+                </a>
+                <a class="w-1/4" href="https://ywca.or.kr/" target="_blank">
+                    <img src="/static/image/korea-ywca.png"/>
+                </a>
+                <a class="w-1/4" href="https://www.gg.go.kr/" target="_blank">
+                    <img src="/static/image/gyeonggido.jpg"/>
+                </a>
+                <a class="w-1/4" href="https://www.nts.go.kr/" target="_blank">
+                    <img src="/static/image/tax-service.png"/>
+                </a>
+            </div>
+            <div class="align-center flex justify-center p-8">
+                <span class="text-xs font-thin">
+                    ⓒ 2025 (사)부천YWCA
+                </span>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
