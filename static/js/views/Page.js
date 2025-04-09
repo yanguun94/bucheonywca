@@ -15,14 +15,14 @@ export default class extends View {
         this.otherPosts = await api('/posts/?limit=3');
 
         return `
-            <div class="px-4 mb-8">
+            <div class="px-4 pb-4">
                 <div class="text-gray-800">${this.postData.primary_tag ? this.postData.primary_tag.name : ''}</div>
                 <h1 class="text-4xl my-2">${this.postData.title}</h1>
                 <div class="text-sm text-gray-500 my-4">
                     <span>${this.postData.primary_author.name}</span>
                     <span class="mx-2">${this.formatDate(this.postData.published_at)}</span>
                 </div>
-                <div id="gh-content-container"></div>
+                <div id="gh-content-container" class="py-4"></div>
             </div>
             <h1 class="text-lg font-bold pt-4 px-4 border-t-1 border-gray-300">
                 <span class="text-blue-800">다른</span> 소식
