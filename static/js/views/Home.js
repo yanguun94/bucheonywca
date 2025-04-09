@@ -56,7 +56,7 @@ export default class extends View {
                             ${this.eventData.posts.map(item => `
                                 <li class="glide__slide text-center px-4">
                                     <a href="/posts/${item.id}" data-link>
-                                        <img class="rounded-xl aspect-square object-cover" src="${item.feature_image}" alt="${item.feature_image_alt}">
+                                        <img class="rounded-xl aspect-1/1.4 object-cover" src="${item.feature_image}" alt="${item.feature_image_alt}">
                                         <div class="text-sm text-bold mt-2">${item.title}</div>
                                         <div class="text-sm text-gray-500 mt-2">${item.excerpt}</div>
                                     </a>
