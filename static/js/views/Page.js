@@ -10,27 +10,26 @@ export default class extends View {
 
     async render() {
         this.data = await api(`/${this.type}/${this.id}/?include=authors,tags&formats=html`);
-        this.post = this.data[this.type][0];
-        this.setTitle(this.post.title);
-        this.latest = await api('/posts/?limit=3');
+        this.postData = this.data[this.type][0];
+        this.setTitle(this.postData.title);
+        this.otherPosts = await api('/posts/?limit=3');
 
         return `
             <div class="px-4 mb-8">
-                <div class="text-gray-800">${this.post.primary_tag ? this.post.primary_tag.name : ''}</div>
-                <h1 class="text-4xl my-2">${this.post.title}</h1>
+                <div class="text-gray-800">${this.postData.primary_tag ? this.postData.primary_tag.name : ''}</div>
+                <h1 class="text-4xl my-2">${this.postData.title}</h1>
                 <div class="text-sm text-gray-500 my-4">
-                    <span>${this.post.primary_author.name}</span>
-                    <span class="mx-2">${this.formatDate(this.post.published_at)}</span>
+                    <span>${this.postData.primary_author.name}</span>
+                    <span class="mx-2">${this.formatDate(this.postData.published_at)}</span>
                 </div>
-                <div id="gh-content-container"">
-                </div>
+                <div id="gh-content-container"></div>
             </div>
             <h1 class="text-lg font-bold pt-4 px-4 border-t-1 border-gray-300">
                 <span class="text-blue-800">다른</span> 소식
             </h1>
             <div class="p-4">
                 <ul class="h-full">
-                    ${this.latest.posts.map(post => `
+                    ${this.otherPosts.posts.map(post => `
                         <li>
                             <a href="/posts/${post.id}" class="flex flex-row py-4" data-link>
                                 <img class="aspect-square object-cover rounded-lg w-1/5" src="${post.feature_image}" alt="${post.feature_image_alt}">
@@ -40,7 +39,7 @@ export default class extends View {
                                 </div>
                             </a>
                         </li>
-                        ${post !== this.latest.posts[this.latest.posts.length - 1] ? '<hr class="text-gray-200">' : ''}
+                        ${post !== this.otherPosts.posts[this.otherPosts.posts.length - 1] ? '<hr class="text-gray-200">' : ''}
                     `).join('')}
                 </ul>
             </div>
@@ -61,7 +60,7 @@ export default class extends View {
         // Content for Shadow DOM
         const content = document.createElement("div");
         content.className = "gh-content";
-        content.innerHTML = this.post.html;
+        content.innerHTML = this.postData.html;
 
         // Append CSS and content to Shadow DOM
         shadowRoot.appendChild(linkElement);
