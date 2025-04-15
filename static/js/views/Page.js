@@ -24,14 +24,14 @@ export default class extends View {
                 </div>
                 <div id="gh-content-container" class="py-4"></div>
             </div>
-            <h1 class="text-lg font-bold pt-4 px-4 border-t-1 border-gray-300">
+            <h1 class="text-lg font-bold mt-8 px-4">
                 <span class="text-blue-800">다른</span> 소식
             </h1>
-            <div class="p-4">
+            <div class="px-4 py-2">
                 <ul class="h-full">
                     ${this.otherPosts.posts.map(post => `
                         <li>
-                            <a href="/posts/${post.id}" class="flex flex-row py-4" data-link>
+                            <a href="/posts/${post.id}" class="flex flex-row py-3" data-link>
                                 <img class="aspect-square object-cover rounded-lg w-1/5" src="${post.feature_image}" alt="${post.feature_image_alt}">
                                 <div class="flex flex-col w-4/5 p-2 ml-2">
                                     <h3 class="font-bold truncate">${post.title}</h3>
@@ -39,7 +39,6 @@ export default class extends View {
                                 </div>
                             </a>
                         </li>
-                        ${post !== this.otherPosts.posts[this.otherPosts.posts.length - 1] ? '<hr class="text-gray-200">' : ''}
                     `).join('')}
                 </ul>
             </div>
