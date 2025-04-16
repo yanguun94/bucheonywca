@@ -24,7 +24,8 @@ export default class extends View {
                 </div>
                 <div id="gh-content-container" class="py-4"></div>
             </div>
-            <h1 class="text-lg font-bold mt-8 px-4">
+            <hr class="border-gray-300"/>
+            <h1 class="text-lg font-bold px-4 pt-4">
                 <span class="text-blue-800">다른</span> 소식
             </h1>
             <div class="px-4 py-2">
@@ -32,10 +33,10 @@ export default class extends View {
                     ${this.otherPosts.posts.map(post => `
                         <li>
                             <a href="/posts/${post.id}" class="flex flex-row py-3" data-link>
-                                <img class="aspect-square object-cover rounded-lg w-1/5" src="${post.feature_image}" alt="${post.feature_image_alt}">
+                                <img class="aspect-square object-cover rounded-lg w-20 h-20" src="${post.feature_image}" alt="${post.feature_image_alt}">
                                 <div class="flex flex-col w-4/5 p-2 ml-2">
                                     <h3 class="font-bold truncate">${post.title}</h3>
-                                    <p class="text-sm text-gray-500 truncate">${post.excerpt}</p>
+                                    <p class="text-sm text-gray-500 mt-1 line-clamp-2">${post.excerpt}</p>
                                 </div>
                             </a>
                         </li>

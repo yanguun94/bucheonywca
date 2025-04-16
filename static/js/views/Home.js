@@ -57,7 +57,7 @@ export default class extends View {
                                 <li class="glide__slide text-center px-4">
                                     <a href="/posts/${item.id}" data-link>
                                         <img class="rounded-xl aspect-4/5 object-cover object-top" src="${item.feature_image}" alt="${item.feature_image_alt}">
-                                        <div class="text-sm text-bold mt-2">${item.title}</div>
+                                        <div class="text-sm text-bold mt-4">${item.title}</div>
                                         <div class="text-sm text-gray-500 mt-2">${item.excerpt}</div>
                                     </a>
                                 </li>
@@ -74,12 +74,13 @@ export default class extends View {
                             <li class="flex flex-col p-4">
                                 <a href="/posts/${post.id}" data-link>
                                     <img class="aspect-2/1 object-cover rounded-lg w-full border-1 border-gray-200" src="${post.feature_image}" alt="${post.feature_image_alt}">
-                                    <div class="p-4">
+                                    <div class="pt-4 px-4">
                                         <h3 class="font-bold">${post.title}</h3>
                                         <div class="text-sm text-gray-500 mt-1">${post.excerpt}</div>
                                     </div>
                                 </a>
                             </li>
+                            ${post !== this.latestPostsData.posts[this.latestPostsData.posts.length - 1] ? '<hr class="mx-4 text-gray-300"/>' : ''}
                         `).join('')}
                     </ul>
                 </div>
@@ -110,12 +111,17 @@ export default class extends View {
         if (currentPage < totalPages) {
             const morePostsData = await api(`/posts/?page=${currentPage + 1}`);
             const morePostsHtml = morePostsData.posts.map(post => `
-                <li class="flex flex-col py-4">
-                    <img class="aspect-2/1 object-cover rounded-lg w-full p-4" src="${post.feature_image}" alt="${post.feature_image_alt}">
-                    <h3 class="font-bold px-6 mb-4">${post.title}</h3>
-                    <p class="text-sm px-8 text-gray-500">${post.excerpt}</p>
+                <hr class="mx-4 text-gray-300"/>
+                <li class="flex flex-col p-4">
+                    <a href="/posts/${post.id}" data-link>
+                        <img class="aspect-2/1 object-cover rounded-lg w-full border-1 border-gray-200" src="${post.feature_image}" alt="${post.feature_image_alt}">
+                        <div class="pt-4 px-4">
+                            <h3 class="font-bold">${post.title}</h3>
+                            <div class="text-sm text-gray-500 mt-1">${post.excerpt}</div>
+                        </div>
+                    </a>
                 </li>
-                ${post !== morePostsData.posts[morePostsData.posts.length - 1] ? '<div class="px-4"><hr></div>' : ''}
+                ${post !== morePostsData.posts[morePostsData.posts.length - 1] ? '<hr class="mx-4 text-gray-300"/>' : ''}
             `).join('');
             document.querySelector('#latest-posts').insertAdjacentHTML('beforeend', morePostsHtml);
             this.latestPostsData.posts.push(...morePostsData.posts);
