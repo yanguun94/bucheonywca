@@ -12,7 +12,7 @@ export default class extends View {
     }
 
     async beforeRender() {
-        this.featuredData = await api('/posts/?filter=featured:true%2Btag:news');
+        this.featuredData = await api('/posts/?filter=featured:true');
         this.pageData = await api('/pages/?order=published_at%20asc');
         this.eventData = await api('/posts/?filter=featured:true%2Btag:events');
         this.latestPostsData = await api('/posts/?page=1');
@@ -27,7 +27,7 @@ export default class extends View {
                             ${this.featuredData.posts.map(item => `
                                 <li class="glide__slide px-4">
                                     <a href="/posts/${item.id}" data-link>
-                                        <img class="rounded-xl aspect-square object-cover" src="${item.feature_image}" alt="${item.feature_image_alt}">
+                                        <img class="rounded-xl aspect-square object-cover object-top" src="${item.feature_image}" alt="${item.feature_image_alt}">
                                     </a>
                                 </li>
                             `).join('')}
@@ -56,7 +56,7 @@ export default class extends View {
                             ${this.eventData.posts.map(item => `
                                 <li class="glide__slide text-center px-4">
                                     <a href="/posts/${item.id}" data-link>
-                                        <img class="rounded-xl aspect-4/5 object-cover object-top" src="${item.feature_image}" alt="${item.feature_image_alt}">
+                                        <img class="rounded-xl aspect-square object-cover object-top" src="${item.feature_image}" alt="${item.feature_image_alt}">
                                         <div class="text-sm text-bold mt-4">${item.title}</div>
                                         <div class="text-sm text-gray-500 mt-2">${item.excerpt}</div>
                                     </a>
