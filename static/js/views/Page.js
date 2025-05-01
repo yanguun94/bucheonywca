@@ -24,7 +24,6 @@ export default class extends View {
                 </div>
                 <div id="gh-content-container" class="py-4"></div>
             </div>
-            <hr class="border-gray-300"/>
             <h1 class="text-lg font-bold px-4 pt-4">
                 <span class="text-blue-800">다른</span> 소식
             </h1>
@@ -48,16 +47,18 @@ export default class extends View {
 
     async rendered() {
         const gbContentContainer = document.getElementById("gh-content-container");
+        this.attachShadowDOM(gbContentContainer, this.postData.html);
+    }
 
+    attachShadowDOM(container, htmlContent) {
         // Attach Shadow DOM
-        const shadowRoot = gbContentContainer.attachShadow({ mode: "open" });
+        const shadowRoot = container.attachShadow({ mode: "open" });
 
         // Load external CSS into Shadow DOM
         const screen = document.createElement("link");
         screen.setAttribute("rel", "stylesheet");
         screen.setAttribute("href", "/static/css/screen.css");
         
-        // Load external CSS into Shadow DOM
         const cards = document.createElement("link");
         cards.setAttribute("rel", "stylesheet");
         cards.setAttribute("href", "/static/css/cards.css");
@@ -65,7 +66,7 @@ export default class extends View {
         // Content for Shadow DOM
         const content = document.createElement("section");
         content.className = "gh-content";
-        content.innerHTML = this.postData.html;
+        content.innerHTML = htmlContent;
 
         // Append CSS and content to Shadow DOM
         shadowRoot.appendChild(screen);
