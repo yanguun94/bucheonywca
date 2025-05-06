@@ -4,3 +4,7 @@ body {
   font-weight: 400;
   font-style: normal;
 }
+
+:root {
+  --ghost-accent-color: #1e40af;
+}

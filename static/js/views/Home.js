@@ -14,8 +14,8 @@ export default class extends View {
     async beforeRender() {
         this.featuredData = await api('/posts/?filter=featured:true');
         this.pageData = await api('/pages/?order=published_at%20asc');
-        this.eventData = await api('/posts/?filter=featured:true%2Btag:events');
-        this.latestPostsData = await api('/posts/?page=1');
+        this.bookData = await api('/posts/?filter=tag:books&limit=5');
+        this.latestPostsData = await api('/posts/?filter=tag:news&page=1');
     }
 
     async render() {
@@ -49,15 +49,15 @@ export default class extends View {
                     `).join('')}
                 </div>
                 <h1 class="text-lg font-bold p-4">
-                    <span class="text-blue-800">진행중인</span> 이벤트
+                    <span class="text-blue-800">이 달의</span> 책
                 </h1>
                 <div class="glide slide2 py-4">
                     <div class="glide__track" data-glide-el="track">
                         <ul class="glide__slides">
-                            ${this.eventData.posts.map(item => `
+                            ${this.bookData.posts.map(item => `
                                 <li class="glide__slide text-center px-4">
                                     <a href="/posts/${item.id}" data-link>
-                                        <img class="rounded-xl aspect-square object-cover object-top" src="${item.feature_image}" alt="${item.feature_image_alt}">
+                                        <img class="aspect-2/3 object-cover object-top border-1 border-gray-300" src="${item.feature_image}" alt="${item.feature_image_alt}">
                                         <div class="text-sm text-bold mt-4">${item.title}</div>
                                         <div class="text-sm text-gray-500 mt-2">${item.excerpt}</div>
                                     </a>
