@@ -2207,7 +2207,7 @@ a.kg-cta-button.kg-style-accent {
 
 .kg-video-container {
   position: relative;
-  height: 0;
+  height: 100%;
   width: 100%;
   overflow: hidden
 }
