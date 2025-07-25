@@ -22,9 +22,6 @@ export default class extends View {
                     <span>${this.postData.primary_author.name}</span>
                     <span class="mx-2">${this.formatDate(this.postData.published_at)}</span>
                 </div>
-                <div class="w-full h-full mb-4">
-                    <img class="w-full h-full object-cover" src="${this.postData.feature_image}" alt="${this.postData.title}" />
-                </div>
                 <div id="gh-content-container" class="py-4"></div>
             </div>
             <h1 class="text-lg font-bold px-4 pt-4">
