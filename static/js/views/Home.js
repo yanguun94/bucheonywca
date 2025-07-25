@@ -12,7 +12,7 @@ export default class extends View {
     }
 
     async beforeRender() {
-        this.featuredData = await api('/posts/?filter=featured:true');
+        this.featuredData = await api('/posts/?filter=featured:true&include=tags');
         this.pageData = await api('/pages/?order=published_at%20asc');
         this.bookData = await api('/posts/?filter=tag:books&limit=5');
         this.latestPostsData = await api('/posts/?filter=tag:news&page=1');
@@ -27,8 +27,13 @@ export default class extends View {
                         <ul class="glide__slides">
                             ${this.featuredData.posts.map(item => `
                                 <li class="glide__slide px-4">
-                                    <a href="/posts/${item.id}" data-link>
-                                        <img class="rounded-xl aspect-square object-cover object-top" src="${item.feature_image}" alt="${item.feature_image_alt}">
+                                    <a href="/posts/${item.id}" data-link class="relative block">
+                                        <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent rounded-xl"></div>
+                                        <img class="w-full h-full rounded-xl aspect-square object-cover object-top" src="${item.feature_image}" alt="${item.feature_image_alt}">
+                                        <div class="absolute bottom-12 left-4 right-4 p-4 text-white">
+                                            <h2 class="text-xl font-bold mt-1">${item.title}</h2>
+                                            <p class="text-sm mt-2">${item.excerpt}</p>
+                                        </div>
                                     </a>
                                 </li>
                             `).join('')}
