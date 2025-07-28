@@ -86,7 +86,6 @@ export default class extends View {
                                     </div>
                                 </a>
                             </li>
-                            ${post !== this.latestPostsData.posts[this.latestPostsData.posts.length - 1] ? '<hr class="mx-4 text-gray-300"/>' : ''}
                         `).join('')}
                     </ul>
                 </div>
